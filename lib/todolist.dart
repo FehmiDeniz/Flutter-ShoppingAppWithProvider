@@ -12,4 +12,6 @@ link : https://www.figma.com/file/YOCr7LhBmqaDP6qn7YeovB/Grocery-shop-app-(Commu
 
 
 
+class açarız, değişen durumları belirleriz 
+
  */
