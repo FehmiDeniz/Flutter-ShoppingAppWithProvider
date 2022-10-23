@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myproject/screens/order.dart';
 import 'package:myproject/screens/products.dart';
 import 'package:provider/provider.dart';
 
@@ -65,23 +66,32 @@ class _homeScreenState extends State<homeScreen> {
                         ),
                       ),
                       Spacer(),
-                      Container(
-                        width: 28,
-                        height: 28,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                                image: AssetImage("assets/ic_basket.png"),
-                                fit: BoxFit.none),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 4,
-                                blurRadius: 6,
-                                offset: Offset(0, 2),
-                              ),
-                            ]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => orderScreen(),
+                              ));
+                        },
+                        child: Container(
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/ic_basket.png"),
+                                  fit: BoxFit.none),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 4,
+                                  blurRadius: 6,
+                                  offset: Offset(0, 2),
+                                ),
+                              ]),
+                        ),
                       ),
                     ],
                   ),
