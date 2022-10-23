@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myproject/homescreen/home.dart';
+import 'package:myproject/screens/home.dart';
 import 'package:myproject/item.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => Item(0),
+          create: (context) => Item(),
         )
       ],
       child: MaterialApp(
