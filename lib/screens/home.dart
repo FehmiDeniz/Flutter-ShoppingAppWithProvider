@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myproject/screens/products.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/src/rendering/box.dart';
@@ -207,14 +208,29 @@ class _homeScreenState extends State<homeScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                width: 88,
-                                height: 90,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          "${item.popularProducts![index]["image"]}"),
-                                      fit: BoxFit.contain),
+                              GestureDetector(
+                                onTap: () {
+                                  print(index);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => productScreen(
+                                        viewId: index,
+                                        direct: item.popularProducts![index]
+                                            ["id"],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 88,
+                                  height: 90,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "${item.popularProducts![index]["image"]}"),
+                                        fit: BoxFit.contain),
+                                  ),
                                 ),
                               ),
                               Container(
@@ -259,7 +275,7 @@ class _homeScreenState extends State<homeScreen> {
                                       child: IconButton(
                                         onPressed: () {
                                           setState(() {
-                                            item.addBasket(index);
+                                            item.addBasket(item.basket![index]);
                                           });
                                         },
                                         icon: Image.asset(
@@ -313,14 +329,28 @@ class _homeScreenState extends State<homeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 88,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                            "${item.topDealProducts![index]["image"]}"),
-                        fit: BoxFit.contain),
+                GestureDetector(
+                  onTap: () {
+                    print(index);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => productScreen(
+                          viewId: index,
+                          direct: item.topDealProducts![index]["id"],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 88,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                              "${item.topDealProducts![index]["image"]}"),
+                          fit: BoxFit.contain),
+                    ),
                   ),
                 ),
                 Container(
@@ -360,9 +390,7 @@ class _homeScreenState extends State<homeScreen> {
                         height: 30,
                         child: IconButton(
                           onPressed: () {
-                            setState(() {
-                              item.addBasket(index);
-                            });
+                            item.addBasket(item.topDealProducts![index]);
                           },
                           icon: Image.asset(
                             "assets/ic_add_btn.png",
