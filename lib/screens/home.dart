@@ -287,7 +287,7 @@ class _homeScreenState extends State<homeScreen> {
                                           onPressed: () {
                                             setState(() {
                                               item.addBasket(
-                                                  item.basket![index]);
+                                                  item.popularProducts![index]);
                                             });
                                           },
                                           icon: Image.asset(

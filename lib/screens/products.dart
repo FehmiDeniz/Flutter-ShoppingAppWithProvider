@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:myproject/item.dart';
 import 'package:provider/provider.dart';
 
+import 'order.dart';
+
 class productScreen extends StatefulWidget {
   final int viewId;
   final int direct;
@@ -65,24 +67,33 @@ class _productScreenState extends State<productScreen> {
                                   ),
                                 ),
                                 Spacer(),
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/ic_basket.png"),
-                                          fit: BoxFit.none),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 4,
-                                          blurRadius: 6,
-                                          offset: Offset(0, 2),
-                                        ),
-                                      ]),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => orderScreen(),
+                                        ));
+                                  },
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "assets/ic_basket.png"),
+                                            fit: BoxFit.none),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 4,
+                                            blurRadius: 6,
+                                            offset: Offset(0, 2),
+                                          ),
+                                        ]),
+                                  ),
                                 ),
                               ],
                             ),
@@ -280,29 +291,37 @@ class _productScreenState extends State<productScreen> {
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              width: 140,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.green[600],
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Icon(
-                                    Icons.shopping_basket,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "Add To Basket",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600),
-                                  )
-                                ],
+                          Material(
+                            color: Colors.white,
+                            child: InkWell(
+                              splashColor: Colors.red,
+                              onTap: () {
+                                for (var i in item.ramBasket!) {
+                                  item.addBasket(i);
+                                }
+                              },
+                              child: Container(
+                                width: 140,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.green[600],
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Icon(
+                                      Icons.shopping_basket,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "Add To Basket",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           )

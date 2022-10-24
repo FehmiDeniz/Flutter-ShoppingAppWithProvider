@@ -15,6 +15,7 @@ class Item with ChangeNotifier {
   List? topDealProducts = [
     {
       "id": 1,
+      "piece": "0",
       "title": "Strawberry",
       "image": "assets/im_strawberry.png",
       "price": 6,
@@ -23,6 +24,7 @@ class Item with ChangeNotifier {
     },
     {
       "id": 2,
+      "piece": "0",
       "title": "Tomatoes",
       "image": "assets/im_tomatoes.png",
       "price": 5,
@@ -31,6 +33,7 @@ class Item with ChangeNotifier {
     },
     {
       "id": 3,
+      "piece": "0",
       "title": "Carrot",
       "image": "assets/im_carrot.png",
       "price": 8,
@@ -42,6 +45,7 @@ class Item with ChangeNotifier {
   List? popularProducts = [
     {
       "id": 4,
+      "piece": "0",
       "title": "Eggplant",
       "image": "assets/im_eggplant.png",
       "price": 5,
@@ -50,6 +54,7 @@ class Item with ChangeNotifier {
     },
     {
       "id": 5,
+      "piece": "0",
       "title": "Banana",
       "image": "assets/im_banana.png",
       "price": 9,
@@ -58,6 +63,7 @@ class Item with ChangeNotifier {
     },
     {
       "id": 6,
+      "piece": "0",
       "title": "Meat",
       "image": "assets/im_et.png",
       "price": 10,
@@ -66,10 +72,10 @@ class Item with ChangeNotifier {
     }
   ];
 
-  int getPrice() {
-    int price = 0;
+  double getPrice() {
+    double price = 0;
     for (var i = 0; i < basket!.length; i++) {
-      price += int.parse(basket![i]["price"].toString());
+      price += double.parse(basket![i]["price"].toString());
     }
     return price;
   }
@@ -84,6 +90,7 @@ class Item with ChangeNotifier {
 
   void addBasket(Object value) {
     basket!.add(value);
+
     notifyListeners();
   }
 
