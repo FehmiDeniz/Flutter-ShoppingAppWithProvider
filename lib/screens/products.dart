@@ -30,204 +30,208 @@ class _productScreenState extends State<productScreen> {
                   Container(
                     width: double.infinity,
                     height: 800,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 400,
-                          height: 50,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 40,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 4,
-                                        blurRadius: 6,
-                                        offset: Offset(0, 2),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      Navigator.pop(context);
-                                      item.clearRamPrice();
-                                      item.pieces = 0;
-                                    });
-                                  },
-                                  icon: Icon(Icons.arrow_back_sharp),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 400,
+                            height: 50,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 4,
+                                          blurRadius: 6,
+                                          offset: Offset(0, 2),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        Navigator.pop(context);
+                                        item.clearRamBasket();
+                                        item.pieces = 0;
+                                      });
+                                    },
+                                    icon: Icon(Icons.arrow_back_sharp),
+                                  ),
                                 ),
-                              ),
-                              Spacer(),
-                              Container(
-                                width: 40,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                        image:
-                                            AssetImage("assets/ic_basket.png"),
-                                        fit: BoxFit.none),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 4,
-                                        blurRadius: 6,
-                                        offset: Offset(0, 2),
-                                      ),
-                                    ]),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 360,
-                          height: 50,
-                          child: Text(
-                            widget.direct <= 3
-                                ? "${item.topDealProducts![widget.viewId]["title"]}"
-                                : "${item.popularProducts![widget.viewId]["title"]}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 31),
-                          ),
-                        ),
-                        Container(
-                          width: 400,
-                          height: 300,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                            widget.direct <= 3
-                                ? "${item.topDealProducts![widget.viewId]["image"]}"
-                                : "${item.popularProducts![widget.viewId]["image"]}",
-                          ))),
-                        ),
-                        Container(
-                          width: 360,
-                          height: 50,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 150,
-                                child: Text(
-                                  widget.direct <= 3
-                                      ? "\$ ${item.topDealProducts![widget.viewId]["price"]}/kg"
-                                      : "\$ ${item.popularProducts![widget.viewId]["price"]}/kg",
-                                  style: TextStyle(
-                                      color: Color(0xff52CA73),
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                width: 200,
-                                height: 50,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                      width: 35,
-                                      height: 35,
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey[400],
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          if (item.ramBasket!.isNotEmpty ==
-                                              true) {
-                                            item.ramBasket!.length.compareTo(0);
-                                            UniqueKey();
-                                            item.removeRamPrice(widget.viewId);
-                                            item.pieces--;
-                                          } else {
-                                            item.ramBasket = [];
-                                          }
-                                        },
-                                        icon: Icon(Icons.remove),
-                                        iconSize: 20,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 90,
-                                      height: 35,
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey[400],
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Center(
-                                        child: Text(
-                                          "${item.pieces}",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20),
+                                Spacer(),
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/ic_basket.png"),
+                                          fit: BoxFit.none),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 4,
+                                          blurRadius: 6,
+                                          offset: Offset(0, 2),
                                         ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 35,
-                                      height: 35,
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey[400],
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            item.pieces++;
-
+                                      ]),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 360,
+                            height: 50,
+                            child: Text(
+                              widget.direct <= 3
+                                  ? "${item.topDealProducts![widget.viewId]["title"]}"
+                                  : "${item.popularProducts![widget.viewId]["title"]}",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 31),
+                            ),
+                          ),
+                          Container(
+                            width: 400,
+                            height: 300,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                              widget.direct <= 3
+                                  ? "${item.topDealProducts![widget.viewId]["image"]}"
+                                  : "${item.popularProducts![widget.viewId]["image"]}",
+                            ))),
+                          ),
+                          Container(
+                            width: 360,
+                            height: 50,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 150,
+                                  child: Text(
+                                    widget.direct <= 3
+                                        ? "\$ ${item.topDealProducts![widget.viewId]["price"]}/kg"
+                                        : "\$ ${item.popularProducts![widget.viewId]["price"]}/kg",
+                                    style: TextStyle(
+                                        color: Color(0xff52CA73),
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(
+                                  width: 200,
+                                  height: 50,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        width: 35,
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: IconButton(
+                                          onPressed: () {
+                                            item.pieces--;
                                             if (widget.direct <= 3) {
-                                              item.addRamPrice(
+                                              item.removeRamPrice(
                                                   item.topDealProducts![
                                                       widget.viewId]);
                                             } else if (widget.direct > 3) {
-                                              item.addRamPrice(
+                                              item.removeRamPrice(
                                                   item.popularProducts![
                                                       widget.viewId]);
                                             }
-                                          });
-                                        },
-                                        icon: Icon(Icons.add),
-                                        iconSize: 20,
+                                          },
+                                          icon: Icon(Icons.remove),
+                                          iconSize: 20,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                      Container(
+                                        width: 90,
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Center(
+                                          child: Text(
+                                            "${item.pieces}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 35,
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              item.pieces++;
+
+                                              if (widget.direct <= 3) {
+                                                item.addRamPrice(
+                                                    item.topDealProducts![
+                                                        widget.viewId]);
+                                              } else if (widget.direct > 3) {
+                                                item.addRamPrice(
+                                                    item.popularProducts![
+                                                        widget.viewId]);
+                                              }
+                                              print(item.ramBasket!.length);
+                                            });
+                                          },
+                                          icon: Icon(Icons.add),
+                                          iconSize: 20,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          width: 360,
-                          height: 30,
-                          child: Text(
-                            "Description",
-                            style: TextStyle(
-                                fontSize: 21, fontWeight: FontWeight.w500),
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 220,
-                          child: Text(
-                            widget.direct <= 3
-                                ? "${item.topDealProducts![widget.viewId]["description"]}"
-                                : "${item.popularProducts![widget.viewId]["description"]}",
-                            style: TextStyle(color: Colors.grey),
+                          Container(
+                            width: 360,
+                            height: 30,
+                            child: Text(
+                              "Description",
+                              style: TextStyle(
+                                  fontSize: 21, fontWeight: FontWeight.w500),
+                            ),
                           ),
-                        )
-                      ],
+                          Container(
+                            width: double.infinity,
+                            height: 220,
+                            child: Text(
+                              widget.direct <= 3
+                                  ? "${item.topDealProducts![widget.viewId]["description"]}"
+                                  : "${item.popularProducts![widget.viewId]["description"]}",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Positioned(

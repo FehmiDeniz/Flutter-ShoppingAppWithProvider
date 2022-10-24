@@ -102,12 +102,12 @@ class Item with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeRamPrice(int index) {
-    ramBasket!.removeAt(index);
+  void removeRamPrice(Object index) {
+    ramBasket!.remove(index);
     notifyListeners();
   }
 
-  void clearRamPrice() {
+  void clearRamBasket() {
     ramBasket = [];
     notifyListeners();
   }
