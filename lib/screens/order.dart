@@ -297,7 +297,7 @@ class _orderScreenState extends State<orderScreen> {
                                         ],
                                       ),
                                       Text(
-                                        "${item.getPrice() * 0.1} \$  ",
+                                        "${(item.getPrice() * 0.1).toStringAsFixed(2)} \$  ",
                                         style: TextStyle(
                                             color: Colors.grey, fontSize: 15),
                                       )
