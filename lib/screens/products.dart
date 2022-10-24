@@ -143,7 +143,9 @@ class _productScreenState extends State<productScreen> {
                                                 BorderRadius.circular(10)),
                                         child: IconButton(
                                           onPressed: () {
-                                            item.pieces--;
+                                            item.pieces > 0
+                                                ? item.pieces--
+                                                : item.pieces = 0;
                                             if (widget.direct <= 3) {
                                               item.removeRamPrice(
                                                   item.topDealProducts![
